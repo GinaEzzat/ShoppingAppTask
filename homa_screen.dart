@@ -55,28 +55,18 @@ class _MyHomePageState extends State<MyHomePage> {
               child: PageView(
                 children: [
                   SizedBox(
-                    width: MediaQuery.of(context).size.width / 2,
-                    height: MediaQuery.of(context).size.height / 3,
                     child: Image.asset("assets/container(1).jpeg"),
                   ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width / 2,
-                    height: MediaQuery.of(context).size.height / 3,
                     child: Image.asset("assets/container(2).jpeg"),
                   ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width / 2,
-                    height: MediaQuery.of(context).size.height / 3,
                     child: Image.asset("assets/container(3).png"),
                   ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width / 2,
-                    height: MediaQuery.of(context).size.height / 3,
                     child: Image.asset("assets/pallet.jpg"),
                   ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width / 2,
-                    height: MediaQuery.of(context).size.height / 3,
                     child: Image.asset("assets/images (8).jpeg"),
                   ),
                 ],
