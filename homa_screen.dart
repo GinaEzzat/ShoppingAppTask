@@ -88,7 +88,6 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Container(
               height: MediaQuery.of(context).size.height / 2,
               child: GridView.builder(
-                //to make the grid unscrollacble
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                 ),
