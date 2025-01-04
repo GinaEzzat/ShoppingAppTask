@@ -38,7 +38,8 @@ class _SignPageState extends State<SignPage> {
                     child: TextFormField(
                       controller: namecontroller,
                       decoration: InputDecoration(labelText: "Full Name"),
-                      validator: (value) { //checking whether the name starts with capital number or not
+                      validator: (value) {
+                        //checking whether the name starts with capital number or not
                         if (value != null && value.isEmpty) {
                           return "name not valid";
                         } else if (value != null &&
@@ -59,7 +60,8 @@ class _SignPageState extends State<SignPage> {
                     child: TextFormField(
                       controller: emailcontroller,
                       decoration: InputDecoration(labelText: "Email"),
-                      validator: (value) { //checking the validation of an email 
+                      validator: (value) {
+                        //checking the validation of an email
                         if (value != null && value.isEmpty) {
                           return "email can't be empty";
                         } else if (value != null && !value.contains('@')) {
@@ -79,7 +81,8 @@ class _SignPageState extends State<SignPage> {
                     child: TextFormField(
                       controller: passwordcontroller,
                       obscureText: hiddenPassword,
-                      validator: (value) { //checking the validation of the password
+                      validator: (value) {
+                        //checking the validation of the password
                         if (value != null && value.isEmpty) {
                           return "password is empty";
                         } else if (value != null && value.length < 6) {
@@ -109,7 +112,8 @@ class _SignPageState extends State<SignPage> {
                     child: TextFormField(
                       controller: confirmpasscontroller,
                       obscureText: hiddenPassword,
-                      validator: (value) { //checking the validation of the confirmed password
+                      validator: (value) {
+                        //checking the validation of the confirmed password
                         if (value != null && value.isEmpty) {
                           return "password not valid";
                         } else if (value != null &&
@@ -140,7 +144,8 @@ class _SignPageState extends State<SignPage> {
                         if (_formkey.currentState!.validate()) {
                           myDialog(); // dialog message that data is valid
                         } else {
-                          SnackBar snackBar = SnackBar( //snackbar showing if the data is valid or not
+                          SnackBar snackBar = SnackBar(
+                            //snackbar showing if the data is valid or not
                             content: Text("enter a valid data"),
                             duration: Duration(seconds: 2),
                             action: SnackBarAction(label: "", onPressed: () {}),
@@ -156,12 +161,14 @@ class _SignPageState extends State<SignPage> {
     );
   }
 
-  togglePassword() { //hidding password function
+  togglePassword() {
+    //hidding password function
     hiddenPassword = !hiddenPassword;
     setState(() {});
   }
 
-  Future<void> myDialog() async { // dialog function 
+  Future<void> myDialog() async {
+    // dialog function
     return showDialog<void>(
       context: context,
       builder: (BuildContext context) {
@@ -172,8 +179,8 @@ class _SignPageState extends State<SignPage> {
             TextButton(
               child: const Text('close'),
               onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => MyHomePage()));
+                Navigator.of(context).push(_createRoute() //function to create animation for the transition 
+                );
               },
             ),
           ],
@@ -181,4 +188,16 @@ class _SignPageState extends State<SignPage> {
       },
     );
   }
+}
+
+Route _createRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => MyHomePage(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      return FadeTransition(
+        opacity: animation,
+        child: child,
+      );
+    },
+  );
 }
