@@ -48,3 +48,14 @@ then we made a _createRoute() function to make the pageroute builder,
 the pagebuilder gets the page we want to go to 
 the transitionbuilder gets the type of the transition which is fadetransition,
 So, when we clicked the button of the alert dialog to go to the home page the signup page fades out and the home page fades in.
+
+# translating the App to arabic
+we used 'easy_localization' package by flutter 
+we changed the pubspec.yaml and added the easy_localization dependency
+we imported the package on each page we used it in.
+to make sure everything to translated perfectly, like the assets we made a new folder called 'lang'
+we add it to the assets on the pubspec file, then we add two json file, one for the english and one for the other language
+each file has the key and the value of the language
+then we take each text we want to translate and put the key in the tr() function.
+we made a button on the appBar to switch between languages, by calling a function called changeLang().
+this function checks if the current language is english then it switch to the other language, else it switch back to english.
