@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -36,21 +37,28 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         backgroundColor: Color(0XFFFFC6C6),
         centerTitle: true,
-        title: Text("Shopping App"),
+        title: Text(context.tr("shopping_app")),
+        actions: [
+          ElevatedButton(
+              onPressed: () {
+                changeLang();
+              },
+              child: Icon(Icons.language_rounded))
+        ],
       ),
       body: ListView(// to make the screen scrollable
           children: [
         Column(children: [
           // section one
           Text(
-            "Our Products",
+            context.tr("products"),
             style: TextStyle(
               fontSize: 50,
             ),
           ),
 
           // images of the products
-          Container(
+          SizedBox(
               height: MediaQuery.of(context).size.height / 2,
               child: PageView(
                 children: [
@@ -75,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // cards with the product image and it's name
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Container(
+            child: SizedBox(
               height: MediaQuery.of(context).size.height / 2,
               child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -89,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Card(
                       //the card of the product
                       color: Color(0xFFFFEBD4),
-                      child: Container(
+                      child: SizedBox(
                         width: 50,
                         height: 50,
                         child: Padding(
@@ -109,7 +117,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         MainAxisAlignment.spaceAround,
                                     children: [
                                       Text(
-                                        "product $index",
+                                        context.tr("product_number",args: [index.toString()]),
                                         style: TextStyle(fontSize: 20),
                                       ),
                                       IconButton(
@@ -118,7 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                               .showSnackBar(SnackBar(
                                             //message will be shown on the bottom of the screen
                                             content:
-                                                Text('Item added to the cart'),
+                                                Text(context.tr("item_to_cart")),
                                             duration: Duration(seconds: 2),
                                           ));
                                         },
@@ -140,21 +148,21 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           // section 3
           Text(
-            "Hot Offers",
+            context.tr("hot_offers"),
             style: TextStyle(
               fontSize: 50,
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Container(
+            child: SizedBox(
               height: MediaQuery.of(context).size.height,
               child: ListView.builder(
                 itemCount: offer.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Container(
+                    child: SizedBox(
                       width: MediaQuery.of(context).size.width,
                       child: Expanded(
                           child: Row(
@@ -165,7 +173,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             width: 200,
                           ),
                           Text(
-                            "offer $index",
+                            context.tr("offer_number",args: [index.toString()]),
                             style: TextStyle(fontSize: 50),
                           )
                         ],
@@ -179,5 +187,12 @@ class _MyHomePageState extends State<MyHomePage> {
         ]),
       ]),
     );
+  }
+   changeLang() {
+    if (context.locale == Locale('en', 'US')) {
+      context.setLocale(Locale('ar', 'EG'));
+    } else {
+      context.setLocale(Locale('en', 'US'));
+    }
   }
 }

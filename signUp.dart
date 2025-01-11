@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'homa_screen.dart';
 
@@ -19,12 +20,21 @@ class _SignPageState extends State<SignPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          ElevatedButton(
+              onPressed: () {
+                changeLang();
+              },
+              child: Icon(Icons.language_rounded))
+        ],
+      ),
       body: Column(
         children: [
           Padding(
             padding: const EdgeInsets.only(top: 100.0, left: 5.0),
             child: Text(
-              "Create Account",
+              context.tr("signing_up"),
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
           ),
@@ -37,7 +47,7 @@ class _SignPageState extends State<SignPage> {
                     padding: const EdgeInsets.all(20.0),
                     child: TextFormField(
                       controller: namecontroller,
-                      decoration: InputDecoration(labelText: "Full Name"),
+                      decoration: InputDecoration(labelText: context.tr("full_name")),
                       validator: (value) {
                         //checking whether the name starts with capital number or not
                         if (value != null && value.isEmpty) {
@@ -45,8 +55,8 @@ class _SignPageState extends State<SignPage> {
                         } else if (value != null &&
                             !value[0].contains(RegExp(r'[A-Z]'))) {
                           SnackBar snackBar = SnackBar(
-                            content:
-                                Text("name must start with a capital letter"),
+                            content: Text(context
+                                .tr("name_validation")),
                             duration: Duration(seconds: 2),
                           );
                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -59,7 +69,8 @@ class _SignPageState extends State<SignPage> {
                     padding: const EdgeInsets.all(20.0),
                     child: TextFormField(
                       controller: emailcontroller,
-                      decoration: InputDecoration(labelText: "Email"),
+                      decoration:
+                          InputDecoration(labelText: context.tr("email")),
                       validator: (value) {
                         //checking the validation of an email
                         if (value != null && value.isEmpty) {
@@ -67,7 +78,8 @@ class _SignPageState extends State<SignPage> {
                         } else if (value != null && !value.contains('@')) {
                           print("email must have");
                           SnackBar snackBar = SnackBar(
-                            content: Text("email must contain @ character"),
+                            content: Text(
+                                context.tr("email_validation")),
                             duration: Duration(seconds: 2),
                           );
                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -88,8 +100,8 @@ class _SignPageState extends State<SignPage> {
                         } else if (value != null && value.length < 6) {
                           password = value;
                           SnackBar snackBar = SnackBar(
-                            content: Text(
-                                "password must have at least 6 characters"),
+                            content: Text(context.tr(
+                                "password_validation")),
                             duration: Duration(seconds: 2),
                           );
                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -97,7 +109,7 @@ class _SignPageState extends State<SignPage> {
                         return null;
                       },
                       decoration: InputDecoration(
-                          labelText: "Password",
+                          labelText: context.tr("password"),
                           suffixIcon: IconButton(
                               onPressed: () {
                                 togglePassword(); //the button of password visibility
@@ -120,7 +132,7 @@ class _SignPageState extends State<SignPage> {
                             (value != password && value.length < 6)) {
                           print("password incorrect");
                           SnackBar snackBar = SnackBar(
-                            content: Text("passwords don't match"),
+                            content: Text(context.tr("confirmpassword_validation")),
                             duration: Duration(seconds: 2),
                           );
                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -129,7 +141,7 @@ class _SignPageState extends State<SignPage> {
                         return null;
                       },
                       decoration: InputDecoration(
-                          labelText: "Confirm Password",
+                          labelText: context.tr("confirm_password"),
                           suffixIcon: IconButton(
                               onPressed: () {
                                 togglePassword(); //the button of password visibility
@@ -146,14 +158,14 @@ class _SignPageState extends State<SignPage> {
                         } else {
                           SnackBar snackBar = SnackBar(
                             //snackbar showing if the data is valid or not
-                            content: Text("enter a valid data"),
+                            content: Text(context.tr("form_validation")),
                             duration: Duration(seconds: 2),
                             action: SnackBarAction(label: "", onPressed: () {}),
                           );
                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
                         }
                       },
-                      child: Text("Login"))
+                      child: Text(context.tr("login")))
                 ],
               ))
         ],
@@ -173,20 +185,29 @@ class _SignPageState extends State<SignPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('AlertDialog'),
-          content: Text("account created successfully"),
+          title: Text(context.tr("alert_dialog")),
+          content: Text(context.tr("account_creation")),
           actions: <Widget>[
             TextButton(
-              child: const Text('close'),
+              child: Text(context.tr("dialog_confirm")),
               onPressed: () {
-                Navigator.of(context).push(_createRoute() //function to create animation for the transition 
-                );
+                Navigator.of(context).push(
+                    _createRoute() //function to create animation for the transition
+                    );
               },
             ),
           ],
         );
       },
     );
+  }
+
+  changeLang() {
+    if (context.locale == Locale('en', 'US')) {
+      context.setLocale(Locale('ar', 'EG'));
+    } else {
+      context.setLocale(Locale('en', 'US'));
+    }
   }
 }
 
