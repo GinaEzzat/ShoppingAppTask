@@ -2,6 +2,13 @@
 Shopping App interface task using flutter
 the main file has the entry point of the application 
 
+
+# flutter_packages_used
+for easy_localization: https://pub.dev/packages/easy_localization 
+for firebase_authentication: https://pub.dev/packages/firebase_auth
+  and firebase_core: https://pub.dev/packages/firebase_core 
+
+
 # home_screen_page
 the home_screen page has the stateful widget 
 the two lists contain the paths of the products and offer images 
@@ -59,3 +66,15 @@ each file has the key and the value of the language
 then we take each text we want to translate and put the key in the tr() function.
 we made a button on the appBar to switch between languages, by calling a function called changeLang().
 this function checks if the current language is english then it switch to the other language, else it switch back to english.
+
+# FireBase_Authentication
+we used 'firebase_auth' package.
+we created a project on firebase and connect it with the flutter project.
+we go through the steps firebase shows.
+we added a dummy user and chose the email and password sign_in method.
+
+
+# login_page
+we build a login page, has two textformfields for email and password
+and two buttons one to login and navigate to the home screen if the user has an account and the other to navigate to the signup page if the user doesn't have an account.
+the page has toggle function for secured passwords, changelang function for localization
