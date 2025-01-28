@@ -59,7 +59,8 @@ class _LoginPageState extends State<LoginPage> {
                               hintText: "Type your Email",
                               prefixIcon: Icon(Icons.email_outlined),
                               prefixIconColor: Colors.grey,
-                              enabledBorder: UnderlineInputBorder(
+                              enabledBorder: UnderlineInputBorder
+                              (
                                 borderSide: BorderSide(color: Colors.grey),
                               )),
                           validator: (value) {

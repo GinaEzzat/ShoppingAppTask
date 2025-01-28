@@ -32,10 +32,11 @@ class _SignPageState extends State<SignPage> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 100.0, left: 5.0),
+            padding: const EdgeInsets.only(bottom: 40.0),
             child: Text(
               context.tr("signing_up"),
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
             ),
           ),
           // signup form
@@ -47,7 +48,13 @@ class _SignPageState extends State<SignPage> {
                     padding: const EdgeInsets.all(20.0),
                     child: TextFormField(
                       controller: namecontroller,
-                      decoration: InputDecoration(labelText: context.tr("full_name")),
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.person),
+                        prefixIconColor: Colors.grey,
+                        hintText: context.tr("full_name"),
+                        enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.grey),
+                              )),
                       validator: (value) {
                         //checking whether the name starts with capital number or not
                         if (value != null && value.isEmpty) {
@@ -70,7 +77,13 @@ class _SignPageState extends State<SignPage> {
                     child: TextFormField(
                       controller: emailcontroller,
                       decoration:
-                          InputDecoration(labelText: context.tr("email")),
+                          InputDecoration(
+                            prefixIcon: Icon(Icons.email_outlined),
+                            prefixIconColor: Colors.grey,
+                            hintText: context.tr("email"),
+                            enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.grey),
+                              )),
                       validator: (value) {
                         //checking the validation of an email
                         if (value != null && value.isEmpty) {
@@ -109,7 +122,12 @@ class _SignPageState extends State<SignPage> {
                         return null;
                       },
                       decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.lock_outline),
+                        prefixIconColor: Colors.grey,
                           hintText: context.tr("password"),
+                          enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.grey),
+                              ),
                           suffixIcon: IconButton(
                               onPressed: () {
                                 togglePassword(); //the button of password visibility
@@ -141,7 +159,12 @@ class _SignPageState extends State<SignPage> {
                         return null;
                       },
                       decoration: InputDecoration(
-                          labelText: context.tr("confirm_password"),
+                        prefixIcon: Icon(Icons.lock_outline),
+                        prefixIconColor: Colors.grey,
+                          hintText: context.tr("confirm_password"),
+                          enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.grey),
+                              ),
                           suffixIcon: IconButton(
                               onPressed: () {
                                 togglePassword(); //the button of password visibility
