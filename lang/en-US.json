@@ -1,0 +1,23 @@
+{
+    "signing_up":"Create Account",
+    "signUp":"Sign Up",
+    "full_name":"Full Name",
+    "email":"Email",
+    "password":"Password",
+    "confirm_password":"Confirm Password",
+    "login":"Login",
+    "name_validation":"name must start with a capital letter",
+    "email_validation":"email must contain @ character",
+    "password_validation":"password must have at least 6 characters",
+    "confirmpassword_validation":"passwords don't match",
+    "form_validation":"enter a valid data",
+    "alert_dialog":"AlertDialog",
+    "account_creation":"account created successfully",
+    "dialog_confirm":"close",
+    "shopping_app":"Shopping App",
+    "products":"Our Products",
+    "product_number":"product {} ",
+    "item_to_cart":"Item added to the cart",
+    "hot_offers":"Hot Offers",
+    "offer_number":"offer {} "
+}

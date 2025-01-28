@@ -1,0 +1,23 @@
+{
+    "signing_up":"إنشاء حساب",
+    "signUp":"إنشئ حساب",
+    "full_name":"الأسم بالكامل",
+    "email":"البريد الإلكترونى",
+    "password":"كلمة المرور",
+    "confirm_password":"تأكيد كلمة المرور",
+    "login":"تسجيل الدخول",
+    "name_validation":"يجب أن يبدأ الأسم بحرف كبير",
+    "email_validation":"يجب أن يحتوى البريد الإلكترونى على علامة @",
+    "password_validation":"يجب أن تحتوى كلمة المرور على 6 حروف/أرقام على الأقل",
+    "confirmpassword_validation":"كلمة مرور غير مطابقة",
+    "form_validation":"أدخل بيانات صحيحة",
+    "alert_dialog":"رسالة تنبيه",
+    "account_creation":"تم إنشاء حساب بنجاح",
+    "dialog_confirm":"إغلاق",
+    "shopping_app":"تطبيق تسوق",
+    "products":"منتجاتنا",
+    "product_number":"منتج {} ",
+    "item_to_cart":"تم أضافة المنتج الى عربة التسوق",
+    "hot_offers":"عروض",
+    "offer_number":"عرض {} "
+}
